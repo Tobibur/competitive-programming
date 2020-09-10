@@ -12,8 +12,34 @@ public class Main {
 
         quickUnion(N);
 
-        //TODO weighted and weighted path compression
+        weightedQuickUnion(N);
 
+        weightedPathCompression(N);
+
+    }
+
+    private static void weightedPathCompression(int n) {
+        WeightedPathCompressionUF weightedPathCompressionUF = new WeightedPathCompressionUF(n);
+
+        weightedPathCompressionUF.union(0, 5);
+        weightedPathCompressionUF.union(2, 5);
+        weightedPathCompressionUF.union(3, 6);
+        weightedPathCompressionUF.union(8, 9);
+
+        System.out.println("Main.weightedPathCompression");
+        System.out.println("Connected (3, 9): " + weightedPathCompressionUF.connected(3, 9));
+    }
+
+    private static void weightedQuickUnion(int n) {
+        WeightedQuickUnionUF weightedQuickUnionUF = new WeightedQuickUnionUF(n);
+
+        weightedQuickUnionUF.union(0, 5);
+        weightedQuickUnionUF.union(2, 5);
+        weightedQuickUnionUF.union(3, 6);
+        weightedQuickUnionUF.union(8, 9);
+
+        System.out.println("Main.weightedQuickUnion");
+        System.out.println("Connected (3, 9): " + weightedQuickUnionUF.connected(3, 9));
     }
 
     private static void quickUnion(int n) {
@@ -24,7 +50,8 @@ public class Main {
         quickUnionUF.union(1, 6);
         quickUnionUF.union(5, 9);
 
-        System.out.println("Connected (0, 9): "+ quickUnionUF.connected(0, 9));
+        System.out.println("Main.quickUnion");
+        System.out.println("Connected (0, 9): " + quickUnionUF.connected(0, 9));
     }
 
     private static void quickFind(int N) {
@@ -35,6 +62,7 @@ public class Main {
         quickFindUF.union(1, 6);
         quickFindUF.union(5, 9);
 
-        System.out.println("Connected (0, 9): "+ quickFindUF.connected(0, 9));
+        System.out.println("Main.quickFind");
+        System.out.println("Connected (0, 9): " + quickFindUF.connected(0, 9));
     }
 }
